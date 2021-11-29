@@ -1,0 +1,666 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>SLAYout: A Graphic Design Theory Bootcamp</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+}
+
+.simple-table-header {
+	background: rgb(247, 246, 243);
+	color: black;
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(145, 145, 142, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(187, 132, 108, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(215, 129, 58, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 148, 51, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(108, 155, 125, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(91, 151, 189, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(167, 130, 195, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(205, 116, 159, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(225, 111, 100, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(145, 145, 142, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(187, 132, 108, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(215, 129, 58, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 148, 51, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(108, 155, 125, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(91, 151, 189, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(167, 130, 195, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(205, 116, 159, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(225, 111, 100, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="8201d547-477e-472f-a19c-a499e6cec707" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><h1 class="page-title">SLAYout: A Graphic Design Theory Bootcamp</h1></header><div class="page-body"><blockquote id="535e5633-b2a5-4966-9706-0d203a4fe5d5" class="">This is a 5-week Graphic Design Theory course designed to help designers and beginners alike to have a strong foundation on the fundamentals of visual design.</blockquote><p id="eb8f7a9a-dd73-4ce4-b211-7b64836139bb" class="">At the end of the course, participants are expected to:</p><ul id="23448e47-1365-43bb-b70a-e3b062efab24" class="bulleted-list"><li style="list-style-type:disc">Have a strong understanding of Graphic Design Theory</li></ul><ul id="45f616a3-b3de-4e76-ba32-01c39bc0bdcb" class="bulleted-list"><li style="list-style-type:disc">Apply Graphic Design Theory to design work</li></ul><ul id="e3687b60-9048-4481-909e-0c8facf4f7ad" class="bulleted-list"><li style="list-style-type:disc">Perceive and critique designs using the correct terminologies to improve their or others&#x27; designs</li></ul><p id="bf22ac4c-a392-4728-804b-2ce83a10d642" class="">
+</p><h3 id="8185c6f5-5727-4062-9075-5a688785eb93" class="">Course Outline</h3><hr id="41cf11df-83ac-4f78-96d8-0f34ccbb9f12"/><p id="dd4bfc50-7d4c-4549-80a5-344a73acfaf5" class=""><strong>Introduction</strong></p><ul id="1b469176-d60b-418b-b499-33853cc2ec9e" class="bulleted-list"><li style="list-style-type:disc">Introduction to the Course</li></ul><ul id="35761a6a-0f76-42de-88c0-a928886f9111" class="bulleted-list"><li style="list-style-type:disc">What is Graphic Design</li></ul><ul id="80ab60c1-35a5-4bc3-8bab-4b10ce550b29" class="bulleted-list"><li style="list-style-type:disc">Theories of Design</li></ul><p id="5b7f451b-d93f-4b29-adf6-f420b47bc88d" class="">
+</p><p id="5c92cc67-ad50-4e06-9cd4-8a7b98e9c3ca" class=""><strong>Week 1: Fundamentals of Composition</strong></p><ul id="ec6a3177-8746-499c-a2c9-157296e111f8" class="bulleted-list"><li style="list-style-type:disc">Elements of Design<ul id="8c63170c-de4a-444f-94fa-b5b75000dfab" class="bulleted-list"><li style="list-style-type:circle">Form</li></ul><ul id="3c6a7104-3c6e-442d-a72d-ba835043314c" class="bulleted-list"><li style="list-style-type:circle">Space</li></ul><ul id="8e41c0a5-8fbb-4322-bc5c-061cace72921" class="bulleted-list"><li style="list-style-type:circle">Value</li></ul><ul id="ead01553-7577-404e-b9f9-ec0721d3f723" class="bulleted-list"><li style="list-style-type:circle">Texture</li></ul><ul id="81b7c441-a52b-4178-9db5-33325a970167" class="bulleted-list"><li style="list-style-type:circle">Scale</li></ul></li></ul><ul id="15ce01d3-7ce0-438a-8342-18e7d260cb68" class="bulleted-list"><li style="list-style-type:disc">Principles of Design<ul id="7d631fd0-0da1-4f03-ade8-eeeb174e9e1b" class="bulleted-list"><li style="list-style-type:circle">Focus</li></ul><ul id="f195227d-4b2d-4098-9b94-c82a31b6d92e" class="bulleted-list"><li style="list-style-type:circle">Contrast</li></ul><ul id="8536c497-ee84-4505-a27d-34423421dc3f" class="bulleted-list"><li style="list-style-type:circle">Balance</li></ul><ul id="69643c0e-9b6d-4486-a3ca-9473d6ec7e52" class="bulleted-list"><li style="list-style-type:circle">Movement</li></ul><ul id="3f5b98ba-0260-4277-933c-f31f8dd4cb88" class="bulleted-list"><li style="list-style-type:circle">Repetition</li></ul><ul id="0308324a-ece5-4d46-8814-5c3e2e65c440" class="bulleted-list"><li style="list-style-type:circle">Unity</li></ul><ul id="84d1e17c-14c9-420a-b84e-c4ee6b6f3f04" class="bulleted-list"><li style="list-style-type:circle">Law of Gestalt</li></ul></li></ul><ul id="2737484b-6caf-4450-a1c6-9bd05bf61afb" class="bulleted-list"><li style="list-style-type:disc">Alignment</li></ul><ul id="bb830433-c8d9-4f26-974a-796fe991812e" class="bulleted-list"><li style="list-style-type:disc">Proximity</li></ul><p id="ef69d8b8-178c-4898-a773-cf9b398e83dd" class="">
+</p><p id="ece0b3ca-96bc-4006-8a20-5ce856a8b04a" class=""><strong>Week 2: Typography</strong></p><ul id="186fee77-ba5f-4538-8665-1c615dfff40e" class="bulleted-list"><li style="list-style-type:disc">History of Type</li></ul><ul id="d5db2cd6-9ab6-40cb-9483-07c95137a2c4" class="bulleted-list"><li style="list-style-type:disc">Anatomy of Type</li></ul><ul id="c386efd4-c668-4d5d-963b-502ca1965570" class="bulleted-list"><li style="list-style-type:disc">Type Theory<ul id="464aaa2a-0f01-46db-860b-b859c3afad36" class="bulleted-list"><li style="list-style-type:circle">Spacing</li></ul><ul id="33c6d098-f385-4e8a-95df-b43605d08a40" class="bulleted-list"><li style="list-style-type:circle">Readability</li></ul><ul id="dfb74cc4-1a7c-4417-b79d-f0dbe5c6f307" class="bulleted-list"><li style="list-style-type:circle">Emphasis</li></ul><ul id="846fbfc5-cecb-440d-b283-2888f81b771e" class="bulleted-list"><li style="list-style-type:circle">Rule and Ornaments</li></ul></li></ul><ul id="eda0ca1f-0482-45a1-898e-fcebd55edef5" class="bulleted-list"><li style="list-style-type:disc">Type Selection<ul id="0b9275d8-7778-4826-b256-11d8d7c2151a" class="bulleted-list"><li style="list-style-type:circle">Meanings behind Type</li></ul></li></ul><p id="5fd791d6-a4b2-479f-a0fd-aa88b766986c" class="">
+</p><p id="84f32d44-5f4d-4c70-a205-dd398ae5d8e1" class=""><strong>Week 3: Color</strong></p><ul id="5dd08110-a347-48fe-adfc-2faaee70faaf" class="bulleted-list"><li style="list-style-type:disc">Color Theory<ul id="1f51fd7a-fa43-4a2b-a171-be135c615eba" class="bulleted-list"><li style="list-style-type:circle">Hue, Saturation, and Brightness</li></ul><ul id="d713e21b-8f11-45cb-9cdd-0a7d4c79b935" class="bulleted-list"><li style="list-style-type:circle">Tints, Tones, and Shades</li></ul><ul id="851ac03e-b129-4e33-b294-9dd8c6f5bdf3" class="bulleted-list"><li style="list-style-type:circle">Harmony</li></ul></li></ul><ul id="bb2583eb-bb39-4364-811b-07a85215e317" class="bulleted-list"><li style="list-style-type:disc">Color Modes<ul id="9024719e-0e1a-4e52-a73b-b0e59cd4f25c" class="bulleted-list"><li style="list-style-type:circle">Additive and Subtractive Color</li></ul><ul id="6e6b3b26-cf2c-4a2b-86a4-1d7e3aa065bf" class="bulleted-list"><li style="list-style-type:circle">Print vs Digital Design</li></ul></li></ul><ul id="4059a561-28db-454e-823d-7062d06a800a" class="bulleted-list"><li style="list-style-type:disc">Contrast and Legibility</li></ul><ul id="ce09c2de-2ddd-4d52-9f72-18df8cef4729" class="bulleted-list"><li style="list-style-type:disc">Color Association</li></ul><p id="86608556-09e2-4d53-82da-4b2ce2188643" class="">
+</p><p id="9d0377c0-49bf-4429-9ff7-d6b8eb70bca6" class=""><strong>Week 4: Layout and Design</strong></p><ul id="4578d82c-c782-4f65-8674-2a3af6dad16e" class="bulleted-list"><li style="list-style-type:disc">Grids and Blocking</li></ul><ul id="8195886e-e223-4d3a-94f1-80f6e390b73c" class="bulleted-list"><li style="list-style-type:disc">Spacing Elements</li></ul><ul id="592bdd6c-7df0-4ac2-86fc-20449281c487" class="bulleted-list"><li style="list-style-type:disc">Designing for Print and Web</li></ul><ul id="77b01226-8554-452c-a42c-51e4a3ebc0be" class="bulleted-list"><li style="list-style-type:disc">Images and Photography</li></ul><p id="e09387d9-430b-48ef-90d7-e55924f6f93e" class="">
+</p><p id="2ecd2f8d-c6a9-4e4c-b2e9-7bfd195c9660" class=""><strong>Week 5: Designing for Pros</strong></p><ul id="8d75ce58-f841-4487-900e-09ad52627003" class="bulleted-list"><li style="list-style-type:disc">Researching for Graphic Design</li></ul><ul id="5a274d12-6502-4380-ac67-3bca3ccb649e" class="bulleted-list"><li style="list-style-type:disc">Getting Inspired and Ideation<ul id="05ba6b07-237e-452a-b914-a3502a85cbf9" class="bulleted-list"><li style="list-style-type:circle">Lateral Thinking and Logical Reasoning</li></ul><ul id="c5e25eb7-23cc-4038-b57d-dbd35504f665" class="bulleted-list"><li style="list-style-type:circle">Moodboarding</li></ul></li></ul><ul id="d6e2c555-aa1c-41f1-b623-032bfb6b3465" class="bulleted-list"><li style="list-style-type:disc">Audience Profiling</li></ul><ul id="b1ecbba2-e48e-4a9f-9ad8-05b4eb04fa54" class="bulleted-list"><li style="list-style-type:disc">Organizing Designs</li></ul><ul id="329668b1-fecc-49f5-868e-61984d61900c" class="bulleted-list"><li style="list-style-type:disc">Developing the Designers&#x27; Eye</li></ul><ul id="a6c6b8a2-5db8-4eec-b949-2bfeeef5f540" class="bulleted-list"><li style="list-style-type:disc">Critiquing Designs</li></ul><ul id="a9062406-6a4e-4797-8e7a-014d456fdeff" class="bulleted-list"><li style="list-style-type:disc">The Legal Side of Design<ul id="6574b3e9-d735-4250-add4-dde53426ddb1" class="bulleted-list"><li style="list-style-type:circle">Copyright</li></ul><ul id="b17400fb-bb20-4240-b0b4-5afbbefca3e5" class="bulleted-list"><li style="list-style-type:circle">Font licensing</li></ul></li></ul><p id="04cc4078-50f6-4171-8416-d0c5fc0df3e3" class="">
+</p><h3 id="1fd8ae4c-7132-4793-bdeb-e78e0439361a" class="">Course Requirements</h3><ul id="ebdf578c-a466-4623-a405-6edc9fa977ca" class="bulleted-list"><li style="list-style-type:disc">Canva Account</li></ul><ul id="5b81d66a-2318-413d-b530-0349b142ecbc" class="bulleted-list"><li style="list-style-type:disc">Non-organization Gmail Account</li></ul><ul id="6a998fe6-165a-4c1b-adb4-503f4ff57495" class="bulleted-list"><li style="list-style-type:disc">A working browser with internet connection, preferably a computer</li></ul><ul id="650e0160-daf6-4801-9e6a-d418f852bf57" class="bulleted-list"><li style="list-style-type:disc">Paper, preferably a sketchbook, and pencil</li></ul><ul id="3f85774b-2c9f-48cb-bc12-e478c39ed365" class="bulleted-list"><li style="list-style-type:disc">Printer and Printer Paper <em>(optional)</em></li></ul><p id="d93ec943-6147-47fe-91f5-269a83fc6fa2" class="">
+</p><h3 id="f387d181-e59a-4d23-8ac5-8e2f6be5b239" class="">Grading System</h3><hr id="d37ee59c-3261-4a34-ad5b-bbc7ddc50154"/><div id="f167d79f-a57e-407e-b2a2-c1cfe816cf2e" class="column-list"><div id="d99387dd-714d-4de7-9ea5-50a80d664a9b" style="width:93.75%" class="column"><p id="dbd0d7f4-aad1-42e9-8f0e-970d8583fab1" class=""><strong>Quizzes and In-course Activities</strong></p></div><div id="ecff95ba-cc45-4c71-b28f-4d666faeeda8" style="width:6.25%" class="column"><p id="daf62f6e-e1fa-4e07-a4f2-b942b76615d5" class="">25%</p></div></div><div id="e1a872ec-e81d-4d2a-b0f5-f2c3010ef26b" class="column-list"><div id="8ad7c3f8-0c5d-4537-8f80-d033111781c4" style="width:93.75%" class="column"><p id="1dd8899e-b7ea-49f5-aafb-86e64cbac40e" class=""><strong>Homework</strong></p></div><div id="5709dbfa-bf5e-44b0-8caa-e7a8e87d28f8" style="width:6.25%" class="column"><p id="7c86ffd1-c12b-4759-b3a7-6e0ac5440eff" class="">40%</p></div></div><div id="a7f16584-0fc5-4852-8e59-94af0243a670" class="column-list"><div id="7269ef23-f201-4ad4-b5ee-11f7a89a16d7" style="width:93.75%" class="column"><p id="5a7abb4b-3934-427c-be2f-36dc5a9f96c8" class=""><strong>Project</strong></p></div><div id="b32913ce-5479-41fa-9aac-7a1080f84525" style="width:6.25%" class="column"><p id="fec5e197-64f1-4c02-b69d-85e9562215c4" class="">35%</p></div></div><hr id="fe7f2599-f782-4481-b2a0-bd955bca1c82"/><p id="98567a5c-3ca2-46f7-98b6-066584521be1" class="">
+</p><p id="0b756c63-13c1-443a-8f76-2bcea8cf6a99" class=""><strong>COURSE INSTRUCTOR: </strong><em>Rephael Torrence S. Raagas</em></p><p id="0c249913-3f0c-4222-ac56-7937166a4a57" class="">
+</p></div></article></body></html>
